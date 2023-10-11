@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;member-mapper.xml&apos; to &apos;ajax-mapper.xml&apos;&#x0D;&#x0A;- Original project: &apos;boardProject&apos;&#x0D;&#x0A;- Destination element: &apos;ajax-mapper.xml&apos;&#x0D;&#x0A;- Original element: &apos;member-mapper.xml&apos;" description="Copy file" element1="src/main/resources/mappers/member-mapper.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1696915876800" target="/boardProject/src/main/resources/mappers/ajax-mapper.xml" units="0" version="1.0"/>
+</session>

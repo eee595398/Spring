@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ajaxMapper">
+	
+	<!--paramterType : 전달 받은 파라미터의 자료형 작성 
+		-> 선택사항으로, 작성 안하면 TypeHandler가 알아서 처리
+	
+	 마이 바티스 전형표기법이 있음
+	  
+	 int -> _int
+	 String - > string
+	
+	 -->
+	<!--닉네임으로 전화번호 조회 -->
+	<select id="selectMemberTel" parameterType="string">
+	SELECT MEMBER_TEL FROM "MEMBER"
+	WHERE MEMBER_NICKNAME=#{nickname}
+	AND MEMBER_DEL_FL ='N'
+	</select>
+
+</mapper>

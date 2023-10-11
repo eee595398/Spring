@@ -1,0 +1,16 @@
+package edu.kh.project.myPage;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/myPage")
+@Controller
+public class MyPageController {
+	
+	public String into() {
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package edu.kh.project.member.model.dao;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository // DB 연결 의미 + bean으로 등록
+public class AjaxDAO {
+	
+	private SqlSessionTemplate sqlSession;
+
+}

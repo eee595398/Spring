@@ -1,0 +1,31 @@
+package edu.kh.project.member.model.service;
+
+import edu.kh.project.member.model.dto.Member;
+
+public interface AjaxService {
+
+	
+
+
+	String selectMemberTel(String nickname);
+
+	
+	
+	// 이메일로 회원정보 조회
+	Member selectMember(String email);
+	
+	
+	// 이메일 중복유효성 검사 
+	
+	Member dupCheckMemberEmail(String memberEmail);
+	
+	
+	//닉네임 중복검사
+	
+	Member dupCheckMemberNickname(String memberNickname);
+
+
+
+	int checkEmail(String email);
+	
+}
