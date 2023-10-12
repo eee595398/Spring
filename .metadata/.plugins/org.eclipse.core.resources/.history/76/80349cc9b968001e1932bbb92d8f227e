@@ -1,0 +1,5 @@
+package edu.kh.project.myPage;
+
+public interface MyPageService implements MyPageService {
+
+}

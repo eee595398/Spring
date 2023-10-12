@@ -59,6 +59,7 @@ public class MemberServiceImpl implements MemberService{
 		return loginMember;
 	}
 
+	//회원가입 서비스
 	@Transactional
 	@Override
 	public int signUp(Member inputMember) {

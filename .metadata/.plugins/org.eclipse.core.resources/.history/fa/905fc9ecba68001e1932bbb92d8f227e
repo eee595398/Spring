@@ -1,0 +1,8 @@
+package edu.kh.project.myPage;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyPageServiceImpl implements MyPageService {
+
+}
