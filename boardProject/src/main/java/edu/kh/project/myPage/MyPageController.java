@@ -1,12 +1,16 @@
 package edu.kh.project.myPage;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.member.model.dto.Member;
@@ -24,7 +28,7 @@ public class MyPageController {
 	
 	// 내 정보 페이지로 이동 
 	@GetMapping("/info")
-	public String into() {
+	public String info() {
 		
 		return "myPage/myPage-info";
 	}
@@ -120,6 +124,65 @@ public class MyPageController {
 		
 		return "redirect:info";// 상대경로(/myPage/info)
 	}
+	
+	/* MultipartFile : input type="file"로 제출된 파일을 저장한 객체
+	 * 
+	 * [제공하는 메서드]
+	 * -transferTo() : 파일을 지정된 경로에 저장(메모리 -> HDD/SSD)
+	 * -getOriginalFileName() : 파일 원본명
+	 * - getSize() : 파일 크기 
+	 * 
+	 * 
+	 * 
+	 * */
+	
+	
+	
+	
+	// 프로필 이미지 수정
+	@PostMapping("/profile")
+	public String updateProfile(
+			@RequestParam("profileImage")MultipartFile profileImage// 업로드 파일
+			,HttpSession session // 세션 객체
+			, @SessionAttribute("loginMember") Member loginMember
+			, RedirectAttributes ra // 리다이렉트 시 메세지 전달
+			)throws Exception {
+		
+		// 웹 접근 경로 
+		
+		String webPath = "/resources/images/member/";
+		
+		// 실제로 이미지 파일이 저장되어야하는 서버 컴퓨터 경로 
+		String filePath = session.getServletContext(). getRealPath(webPath);
+		
+		
+		// 프로필 이미지 수정 서비스 호출
+		int result = service.updateProfile(profileImage, webPath, filePath,loginMember);
+		
+		String message = null;
+		if(result > 0) message = "프로필 이미지가 변경되었습니다";
+		else message = "프로필 변경 실패";
+		
+		ra.addFlashAttribute("message",message);
+		
+		return "redirect:profile";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

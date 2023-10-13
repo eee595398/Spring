@@ -14,7 +14,14 @@ public class MyPageDAO {
 
 	public int updateInfo(Member updateMember) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("mypageMapper.updateInfo",updateMember);
+		return sqlSession.update("myPageMapper.updateInfo",updateMember);
+	}
+
+	// 프로필 이미지 수정 
+	public int updateProfileImage(Member loginMember) {
+		// TODO Auto-generated method stub
+
+		return sqlSession.update("myPageMapper.updateProfileImage",loginMember);
 	}
 
 }
