@@ -1,0 +1,21 @@
+package edu.kh.project.board.dao;
+
+
+@Repository
+public class BoardDAO {
+	
+	@Autowired
+	private SqlSessionTemplate sqlSession;
+	
+	
+	
+	public List<Map<String,Object>> selectBoardTypeList(){
+		
+		return sqlSession.selectList("boardMapper.selectBoardTypeList");
+		
+	}
+	
+	
+	
+
+}

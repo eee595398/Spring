@@ -1,0 +1,6 @@
+package edu.kh.project.board.model.service;
+
+@Service
+public class BoardServiceImpl implements BoardService {
+
+}

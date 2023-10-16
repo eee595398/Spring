@@ -1,0 +1,20 @@
+package edu.kh.project.board.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class BoardDAO {
+	
+	
+	
+	
+	public List<Map>{
+		
+		return sql.Session.selectList("boardMapper.selectBoardTypeList");
+		
+	}
+	
+	
+	
+
+}

@@ -1,0 +1,10 @@
+package edu.kh.project.board.dao;
+
+
+@Repository
+public class BoardDAO {
+	
+	
+	
+
+}

@@ -1,0 +1,12 @@
+package edu.kh.project.common.interceptor;
+
+// Interceptor : 요청/응답을 가로채는 객체 
+// Client <->(Filter) <-> Dispatcher Servlet <-> (Interceotror) <-> Controller
+
+//필터는? 전반적으로 쓰일 보안,인증, 인가 관련 작업, 문자열 인코딩 
+//
+
+
+public class BoardTypeInterceptor {
+
+}
