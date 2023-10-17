@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.kh.project.board.service.BoardService;
+import edu.kh.project.board.model.service.BoardService;
 
 // Interceptor : 요청/응답을 가로채는 객체 
 // Client <->(Filter) <-> Dispatcher Servlet <-> (Interceotror) <-> Controller
