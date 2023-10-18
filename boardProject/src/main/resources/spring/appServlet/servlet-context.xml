@@ -31,17 +31,16 @@
 	 -->
 	<context:component-scan base-package="edu.kh.project" />
 	
-		<!-- 트랜잭션 처리 시 @Transactional 어노테이션을 사용할 예정 
+	<!-- 트랜잭션 처리 시 @Transactional 어노테이션을 사용할 예정 
 		
 		해당 어노테이션을 인식하라는 설정이 필요함
 		
 		@Transactional: 클래스 또는 메서드 수행 후 트랜잭션 처리를 하라고 알려주는 어노테이션
 		
 	-->
-	
-
 	<!-- @Transactinal 어노테이션 인식, 활성화 -->
 	<tx:annotation-driven  transaction-manager="transactionManager"/>
+	
 	
 	<!-- 게시판 인터셉터 관련 부분 -->
 	<interceptors>
@@ -51,8 +50,6 @@
 			<beans:bean id="boardTypeInterceptor" class="edu.kh.project.common.interceptor.BoardTypeInterceptor"/>
 		</interceptor>
 	</interceptors>
-	
-	
 	
 	
 	

@@ -310,6 +310,7 @@ memberNickname.addEventListener("input", ()=>{
 
 });
 
+
 // 전화번호 유효성 검사
 const memberTel = document.getElementById("memberTel");
 const telMessage = document.getElementById("telMessage");
@@ -359,6 +360,7 @@ let authSec = 59;
 let tempEmail;
 
 sendAuthKeyBtn.addEventListener("click", function(){
+
     authMin = 4;
     authSec = 59;
 
@@ -454,15 +456,6 @@ checkAuthKeyBtn.addEventListener("click", function(){
     }
 
 });
-
-
-
-
-
-
-
-
-
 
 
 

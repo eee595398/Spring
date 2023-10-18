@@ -249,13 +249,6 @@ input[name='saveId']{
     margin-right: 5px;
 }
 
-#profileFrm{
-	
-	position:relative;
-}
-
-
-
 /* 회원가입, ID/PW 찾기 영역 */
 .signup-find-area{
     margin-top: 10px;

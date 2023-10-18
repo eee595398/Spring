@@ -5,7 +5,7 @@
     사이드메뉴
 
     <ul class="list-group">
-        <li> <a href="/myPage/profile">프로필</a> </li>
+         <li> <a href="/myPage/profile">프로필</a> </li>
         
         <li> <a href="/myPage/info">내 정보</a> </li>
         

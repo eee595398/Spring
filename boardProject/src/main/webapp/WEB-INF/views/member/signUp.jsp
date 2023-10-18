@@ -97,17 +97,17 @@
                 <label for="memberAddress">주소</label>
 
                 <div class="signUp-input-area">
-                    <input type="text" name="memberAddress"  id="sample6_postcode" placeholder="우편번호" maxlength="6">
+                    <input type="text" name="memberAddress" id="sample6_postcode" placeholder="우편번호" maxlength="6">
                     
-                    <button type="button" onclick="sample6_execDaumPostcode()" >검색</button>
+                    <button type="button" onclick="sample6_execDaumPostcode()">검색</button>
                 </div>
 
                 <div class="signUp-input-area">
-                    <input type="text" name="memberAddress"  id="sample6_address" placeholder="도로명/지번 주소">
+                    <input type="text" name="memberAddress" id="sample6_address" placeholder="도로명/지번 주소">
                 </div>
 
                 <div class="signUp-input-area">
-                    <input type="text" name="memberAddress"  id="sample6_detailAddress" placeholder="상세 주소">
+                    <input type="text" name="memberAddress" id="sample6_detailAddress" placeholder="상세 주소">
                 </div>
 
 
@@ -119,6 +119,7 @@
 
     <%-- footer.jsp include --%>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    
     
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
@@ -138,6 +139,7 @@
 	                    addr = data.jibunAddress;
 	                }
 	
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                document.getElementById('sample6_postcode').value = data.zonecode;
 	                document.getElementById("sample6_address").value = addr;
 	                // 커서를 상세주소 필드로 이동한다.
@@ -146,9 +148,6 @@
 	        }).open();
 	    }
 	</script>
-	    
-    
-    
     
     
     

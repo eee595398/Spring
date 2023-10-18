@@ -27,7 +27,6 @@
 		<mapper resource="/mappers/ajax-mapper.xml"/>
 		<mapper resource="/mappers/email-mapper.xml"/>
 		<mapper resource="/mappers/myPage-mapper.xml"/>
-		<mapper resource="/mappers/board-mapper.xml"/>
 	</mappers>
 
 

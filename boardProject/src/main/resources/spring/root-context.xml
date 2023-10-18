@@ -61,13 +61,13 @@
 		<property name="dataSource" ref="dataSource" />
 		
 	</bean>
+
 	
 	<!-- 파일 업로드를 위한 MutipartResolver 구현체 CommonsMultipartResolver  bean 등록 
--> CommonsMultipartResolver를 bean으로 등록하면 
-multipart/form-data 형식으로 요청 시  input type="file" 태그를 자동적으로 인식하여 
-MultipartFile 객체로 반환하고 파일 외의 데이터(정수, 문자열 등의 텍스트 데이터)는 
-기존처럼 사용 가능(MultipartRequest 필요 없음) -->
-<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	-> CommonsMultipartResolver를 bean으로 등록하면 multipart/form-data 형식으로 요청 시  
+	input type="file" 태그를 자동적으로 인식하여 MultipartFile 객체로 반환하고 
+	파일 외의 데이터(정수, 문자열 등의 텍스트 데이터)는 기존처럼 사용 가능(MultipartRequest 필요 없음) -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		 <property name="maxUploadSize" value="104857600"/>
 		 <property name="maxUploadSizePerFile" value="104857600"/>
 		 <property name="maxInMemorySize" value="104857600"/>
@@ -90,23 +90,9 @@ MultipartFile 객체로 반환하고 파일 외의 데이터(정수, 문자열 �
 	 		사이즈가 이보다 클 경우 이 사이즈 이상의 데이터는 파일에 저장됩니다. 
 			 기본값은 10240 바이트.
 	 -->	
-
-
-
 	
 	
 	
-	
-	
-	
-	<!-- 트랜잭션 처리 시 @Transactional 어노테이션을 사용할 예정 
-		
-		해당 어노테이션을 인식하라는 설정이 필요함
-		
-		@Transactional: 클래스 또는 메서드 수행 후 트랜잭션 처리를 하라고 알려주는 어노테이션
-		
-	-->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 	
 </beans>
