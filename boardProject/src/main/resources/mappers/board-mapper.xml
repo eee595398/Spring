@@ -143,6 +143,48 @@
 	
 	</select>
 	
+	
+	<!--  -->
+	<select id="boardLikeCheck" resultType="_int">
+		SELECT COUNT(*) 
+		FROM BOARD_LIKE
+		WHERE BOARD_NO = #{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	
+	
+	<!--조회수 증가  -->
+	<update id="updateReadCount">
+		UPDATE "BOARD" SET
+		READ_COUNT = READ_COUNT + 1 
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	
+	<!--하트 체크  -->
+	<insert id="insertBoardLike">
+		INSERT INTO "BOARD_LIKE" VALUES (#{boardNo}, #{memberNo})
+	</insert>
+	
+	
+	<!--좋아요삭제  -->
+	<delete id="deleteBoardLike">
+		DELETE FROM "BOARD_LIKE"
+		WHERE BOARD_NO = #{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	</delete>
+	
+	<!--좋아요 조회  -->
+	<select id="countBoardLike" resultType="_int">
+		SELECT COUNT(*) FROM "BOARD_LIKE" WHERE BOARD_NO = #{boardNo}
+	</select>
+	
+	
+	
+	
+	
+	
 	<select id="selectCommnetList" resultMap="comment_rm"></select>
 	
 		<!-- BoardImage resultMap -->
