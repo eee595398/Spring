@@ -22,7 +22,9 @@
     <main>
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-        <form action="/board2/${boardCode}/insert" method="POST" class="board-write" id="boardWriteFrm">  
+        <form action="/board2/${boardCode}/insert" method="POST" class="board-write" id="boardWriteFrm"
+        enctype="multipart/form-data"
+       		 >  
             <h1 class="board-name">${boardName}</h1>
 
             <!-- 제목 -->
