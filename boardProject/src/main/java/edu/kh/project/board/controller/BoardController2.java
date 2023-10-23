@@ -1,12 +1,15 @@
 package edu.kh.project.board.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.project.board.model.dto.Board;
+import edu.kh.project.board.model.service.BoardService;
 import edu.kh.project.board.model.service.BoardService2;
 import edu.kh.project.member.model.dto.Member;
 
@@ -27,7 +31,10 @@ import edu.kh.project.member.model.dto.Member;
 public class BoardController2 {
 	
 	@Autowired
-	private BoardService2 service;
+	private BoardService2 service; // 삽입, 수정 ,삭제 
+	
+	@Autowired
+	private BoardService boardService; // 목록, 상세조회
 	
 	// 게시글 작성 화면 전환
 	@GetMapping("/{boardCode:[0-9]+}/insert")
@@ -112,5 +119,123 @@ public class BoardController2 {
 		return path;
 		
 	}
+	
+	
+	// 게시글 수정 화면 전화 
+	@GetMapping("/{boardCode}/{boardNo}/update")
+	public String boardUpdate(
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			Model model
+			// Model : 데이터 전달용 객체(기본 scope : request)
+			
+			
+			) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("boardCode", boardCode);
+		map.put("boardNo", boardNo);
+		
+		Board board = boardService.selectBoard(map);
+		
+		model.addAttribute("board", board);
+		
+		
+		
+		return "board/boardUpdate";
+		
+	}
+	
+	// 게시글 수정 
+	@PostMapping("/{boardCode}/{boardNo}/update")
+	public String boardUpdate(
+			Board board, // 커맨드 객체(name == 필드 경우 필드에 파라미터 세팅)
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp, // 쿼리스트링 유지
+			@RequestParam(value="images", required = false) List<MultipartFile> images,// 업로드된 파일 리스트
+			@RequestParam(value="deleteList", required = false) String deleteList, // 삭제할 이미지 순서 
+			HttpSession session, // 서버 파일 저장 경로 얻어올 용도
+			RedirectAttributes ra // 리다이렉트 시 값 전달용(message)
+			)throws IllegalStateException, IOException {
+		
+		
+		// 1) boardCode, boardNo를 커맨드 객체(board)에 세팅
+		board.setBoardCode(boardCode);
+		board.setBoardNo(boardNo);
+		
+		// board(boardCode, boardNo, boardTitile, boardContent)
+		
+		
+		// 2) 이미지 서버 저장경로, 웹 접근 경로
+		String webPath = "/resources/images/board/";
+		String filePath = session.getServletContext().getRealPath(webPath);
+		
+		//getServletContext() == 웹 어플리케이션
+		
+		
+		// 3) 게시글 수정 서비스 호출
+		
+		int rowCount = service.boardUpdate(board, images, webPath, filePath, deleteList);
+		
+		
+		// 4) 결과에 따라 message, path 설정 
+		
+		String message = null;
+		String path = "redirect:";
+		
+		if(rowCount>0) {
+			message = "게시글이 수정되었습니다";
+			path += "/board/" +boardCode + "/" +boardNo + "?cp="+cp;
+			
+		} else {
+			message="게시글 수정 실패";
+			path += "update";
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return path;
+		
+	}
+	
+	
+	
+	// 게시글 삭제 
+	
+	@GetMapping("/{boardCode}/{boardNo}/delete")
+	public String boardDelete(
+			@PathVariable("boardCode") int boardCode,
+			@PathVariable("boardNo") int boardNo,
+			HttpSession session,
+			RedirectAttributes ra
+			) {
+	
+		//boardCode, boardNo 서비스로 넘겨야함
+		// map으로 담아서 보내느걸 추천
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("boardCode", boardCode);
+		map.put("boardNo", boardNo);
+		
+		int rowCount = service.boardDelete(map);
+		
+		
+		// 결과값이 >0
+		// "삭제되었습니다." 
+		// /board/{boardCode}
+		
+		// 삭제실패
+		// "삭제 실패"
+		// /board/{boardCode} / {boardNo}
+		
+		
+		return null;
+		
+	}
+	
+	
+	
 	
 }

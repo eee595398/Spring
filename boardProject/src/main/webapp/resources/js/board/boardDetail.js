@@ -58,3 +58,36 @@ boardLike.addEventListener("click", e => {
 
 
 });
+
+
+
+// 게시글 수정 버튼 클릭시 
+document.getElementById("updateBtn").addEventListener("click",() => {
+
+		location.href
+		= location.pathname.replace("board","board2")
+		+ "/update" 
+		+ location.search
+		//board2/2/2006/update?cd=1 (GET)
+
+});
+
+
+// 게시글 삭제 버튼이 클릭되었을때
+document.getElementById("goToListBtn").addEventListener("click",() =>{
+	
+		location.href
+		= location.pathname.replace("board","board2")
+		+ "/delete"
+		+ location.search
+
+
+		
+			//board2/2/2006/delete (GET)
+
+});
+
+
+
+
+
