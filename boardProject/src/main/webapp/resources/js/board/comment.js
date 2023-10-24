@@ -1,8 +1,17 @@
 // 댓글 목록 조회
 function selectCommentList(){
+
+	// REST(Representaional State Transfer) API
+	// 자원을 이름(주소)으로 구분하여
+	// 자원의 상태를 주고 받는 것
+	
+	//  -> 주소를 명시하고 
+	// Http Method (GET, POST, PUT, DELETE)를 이용해 
+	// 지정된 자원에 대한 CRUD 진행
+	// 자바 가 js로 받기 위해 파싱해야함 json 필요
     
-    fetch()
-    .then()
+    fetch("/comment?boardNo=" +boardNo)
+    .then(response => response.json())
     .then(cList => {
         console.log(cList);
 
@@ -136,12 +145,23 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
     }
 
     // 3) AJAX를 이용해서 댓글 내용 DB에 저장(INSERT)
-    fetch()
-    .then()
+    fetch("/comment/addComment",{ 
+	  	method : "POST",
+	    headers : {"Content-Type" : "application/json"},
+	    body : JSON.stringify({
+	    "commentContent": commentContent.value,
+	    boardNo : boardNo,
+	    memberNo : memberNo
+	    }
+	 	 
+	    )
+
+    })
+    .then(response => response.json())
     .then(result => {
         if(result > 0){ // 등록 성공
             alert("댓글이 등록되었습니다.");
-
+			console.log(result);
             commentContent.value = ""; // 작성했던 댓글 삭제
 
             selectCommentList(); // 비동기 댓글 목록 조회 함수 호출
@@ -157,12 +177,21 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
 
 // -----------------------------------------------------------------------------------
 // 댓글 삭제
-function deleteComment(commentNo){
+
+const deleteComment = document.getElementById("deleteComment");
+
+deleteComment.addEventListener("click", e =>{
 
     if( confirm("정말로 삭제 하시겠습니까?") ){
 
-        fetch()
-        .then()
+        fetch("/deleteComment"{
+        	  	method : "POST",
+	    headers : {"Content-Type" : "application/json"},
+	    body : JSON.stringify()
+
+	    })
+        
+        .then(response => response.json())
         .then(result => {
             if(result > 0){
                 alert("삭제되었습니다");
@@ -174,7 +203,7 @@ function deleteComment(commentNo){
         .catch(err => console.log(err));
 
     }
-}
+});
 
 
 

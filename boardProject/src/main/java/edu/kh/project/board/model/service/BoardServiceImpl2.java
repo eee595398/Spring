@@ -172,7 +172,7 @@ public class BoardServiceImpl2 implements BoardService2 {
 			int rowCount = dao.boardUpdate(board);
 			
 			
-			// 2. 게시글 부분이 수정 성골 했을때 
+			// 2. 게시글 부분이 수정 성공 했을때 
 			if(rowCount > 0) {
 				
 				if(!deleteList.equals("")) { //삭제할 이미지가 있다면
