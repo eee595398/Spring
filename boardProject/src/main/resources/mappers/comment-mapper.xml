@@ -3,13 +3,40 @@
 <mapper namespace="commentMapper">
 
 	 <select id="selectList">
-	 SELECT * FROM BOARD WHERE BOARD_NO =#{boardNo}; 
+	 SELECT * FROM BOARD WHERE BOARD_NO =#{boardNo}
 	 </select>
 	
-	<insert id="addComment" resultType="_int">
+	<!--댓글삽입  -->
+	<insert id="addComment">
 	INSERT INTO "COMMENT"								
-	VALUES(SEQ_COMMENT_NO.NEXTVAL, #{commentContent}, DEFAULT, DEFAULT, #{boardNo}, #{memberNo}, NULL);
+	VALUES(SEQ_COMMENT_NO.NEXTVAL, #{commentContent}, DEFAULT, DEFAULT, #{boardNo}, #{memberNo},
+	
+	<!--동적 sql if문  -->
+		<!--부모 댓글  -->
+		<if test="parentNo == 0">NULL</if>
+		<!--자식 댓글  -->
+		<if test="parentNo != 0">#{parentNo}</if>
+		
+		)
 	</insert>
+	
+	
+	<!--댓글 삭제  -->
+	
+	<update id="deleteComment">
+	UPDATE "COMMENT" SET
+	COMMENT_DEL_FL = 'Y'
+	WHERE COMMENT_NO = #{commentNo}
+	</update>
+	
+	
+		<!-- 댓글 수정 -->
+	<update id="update">
+		UPDATE "COMMENT" SET
+		COMMENT_CONTENT = #{commentContent}
+		WHERE COMMENT_NO = #{commentNo}
+	</update>
+	
 	
 
 </mapper>

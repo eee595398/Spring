@@ -36,25 +36,15 @@ public class CommentController {
 	}
 	
 	// 댓글 삽입 
-	@PostMapping(value="/comment/addComment",produces="apllication/json; charset=UTF-8")
-	public  String addComment( Map<String, object> paramMap Comment comment
-//			@PathVariable("commentContent") String commentContent,
-//			@PathVariable("boardNo") int boardNo,
-//			@PathVariable("memberNo")  int memberNo,
+	@PostMapping("/comment")
+	public  int addComment(@RequestBody Comment comment
+		) {
+		// 요청 데이터(JSON) 
+		// HTTpMEssageConverter가 해석 -> JAVA 객체(comment)에 대입
+
+		return service.addComment(comment);	
 		
-			
-			) {
 		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("commentContent", commentContent);
-//		map.put("boardNo", boardNo);
-//		map.put("memberNo", memberNo);
-//	
-		
-		int result = service.addComment(comment);	
-		return result;
-		
-		//return service.addComment(comment);
 		
 	}
 	
@@ -63,11 +53,11 @@ public class CommentController {
 	
 	// 댓글 삭제 
 	
-	 @PostMapping(value="/deleteComment")
-     public String deleteComment() {
+	 @PostMapping("/deleteComment")
+     public int deleteComment(@RequestBody Comment comment) {
     	 
     	 
-    	 return null;
+    	 return service.deleteComment(comment);
      }
 	
 	

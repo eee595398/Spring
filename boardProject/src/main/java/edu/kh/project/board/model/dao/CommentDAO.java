@@ -15,6 +15,7 @@ public class CommentDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
+	
 	public List<Comment> select(int boardNo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("commentMapper.selectList",boardNo);
@@ -25,11 +26,29 @@ public class CommentDAO {
 
 
 
+	/** 댓글 삽입
+	 * @param comment
+	 * @return result
+	 */
 	public int addComment(Comment comment) {
 		// TODO Auto-generated method stub
 		 return sqlSession.insert("commentMapper.addComment",comment);
 		
 
+	}
+
+
+
+
+
+
+	/** 댓글 삭제 
+	 * @param comment
+	 * @return result
+	 */
+	public int deleteComment(Comment comment) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("commentMapper.deleteComment",comment);
 	}
 
 }
