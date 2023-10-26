@@ -51,14 +51,13 @@ public class CommentController {
 	
 	
 	
-	// 댓글 삭제 
+
 	
-	 @PostMapping("/deleteComment")
-     public int deleteComment(@RequestBody Comment comment) {
-    	 
-    	 
-    	 return service.deleteComment(comment);
-     }
+	// 댓글 삭제
+	@GetMapping("/comment/delete")
+	public int delete(int commentNo) {
+		return service.delete(commentNo);
+	}
 	
 	
 	

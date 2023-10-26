@@ -39,7 +39,7 @@
                     
                       <!-- 로그인 회원과 댓글 작성자가 같은 경우 --> 
 				 <c:if test="${loginMember.memberNo==board.memberNo}">        
-                    <button onclick="showUpdateComment(${comment.commentNO},this)>수정</button>     
+                    <button onclick="showUpdateComment(${comment.commentNo},this)>수정</button>     
                     <button onclick="deleteComment(${comment.commentNo})">삭제</button>
                    </c:if> 
                     

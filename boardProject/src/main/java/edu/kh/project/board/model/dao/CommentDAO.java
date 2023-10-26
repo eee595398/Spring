@@ -42,13 +42,14 @@ public class CommentDAO {
 
 
 
-	/** 댓글 삭제 
-	 * @param comment
+
+	/** 댓글 삭제
+	 * @param commentNo
 	 * @return result
 	 */
-	public int deleteComment(Comment comment) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("commentMapper.deleteComment",comment);
+	public int delete(int commentNo) {
+		return sqlSession.update("commentMapper.delete", commentNo);
 	}
+
 
 }

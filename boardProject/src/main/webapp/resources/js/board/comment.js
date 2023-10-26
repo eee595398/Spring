@@ -179,20 +179,12 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
 // -----------------------------------------------------------------------------------
 // 댓글 삭제
 
-const deleteComment = document.getElementById("deleteComment");
-
-deleteComment.addEventListener("click", e =>{
+function deleteComment(commentNo){
 
     if( confirm("정말로 삭제 하시겠습니까?") ){
 
-        fetch("/deleteComment",{
-        	  	method : "POST",
-	    headers : {"Content-Type" : "application/json"},
-	    body : JSON.stringify()
-
-	    })
-        
-        .then(response => response.json())
+        fetch("/comment/delete?commentNo="+commentNo)
+        .then(resp => resp.text())
         .then(result => {
             if(result > 0){
                 alert("삭제되었습니다");
@@ -204,8 +196,7 @@ deleteComment.addEventListener("click", e =>{
         .catch(err => console.log(err));
 
     }
-});
-
+}
 
 
 

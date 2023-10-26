@@ -19,7 +19,11 @@ public interface CommentService {
 
 
 
-	int deleteComment(Comment comment);
+
+
+
+
+	int delete(int commentNo);
 
 
 }

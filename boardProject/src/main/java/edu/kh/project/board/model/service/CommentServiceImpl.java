@@ -36,15 +36,14 @@ public class CommentServiceImpl implements CommentService {
 		return dao.addComment(comment);
 	}
 	
-	// 댓글 삭제 
+
+
+	// 댓글 삭제
+	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int deleteComment(Comment comment) {
-		// TODO Auto-generated method stub
-		return dao.deleteComment(comment);
+	public int delete(int commentNo) {
+		return dao.delete(commentNo);
 	}
-
-
-
 
 
 

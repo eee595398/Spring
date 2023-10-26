@@ -23,7 +23,7 @@
 	
 	<!--댓글 삭제  -->
 	
-	<update id="deleteComment">
+	<update id="delete">
 	UPDATE "COMMENT" SET
 	COMMENT_DEL_FL = 'Y'
 	WHERE COMMENT_NO = #{commentNo}
