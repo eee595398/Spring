@@ -40,4 +40,11 @@ public interface BoardService {
 	 */
 	int like(Map<String, Integer> paramMap);
 
+	/** 게시글 목록 조회(검색)
+	 * @param paramMap
+	 * @param cp
+	 * @return boardList
+	 */
+	Map<String, Object> selectBoardList(Map<String, Object> paramMap, int cp);
+
 }

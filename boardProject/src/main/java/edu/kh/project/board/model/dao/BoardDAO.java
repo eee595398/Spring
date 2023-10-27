@@ -117,4 +117,39 @@ public class BoardDAO {
 		return sqlSession.selectOne("boardMapper.countBoardLike",boardNo);
 	}
 
+
+	/** 게시글 수 조회(검색)
+	 * @param paramMap
+	 * @return
+	 */
+	public int getListCount(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("boardMapper.getListCount_search",paramMap);
+	}
+
+
+	/** 게시글 목록조회(검색)
+	 * @param pagination
+	 * @param paramMap
+	 * @return
+	 */
+	public List<Board> selectBoardList(Pagination pagination, Map<String, Object> paramMap) {
+		// RowBounds 객체
+		// - 마이바티스에서 페이징처리를 위해 제공하는 객체
+		// - offset 만큼 건너뛰고
+		// 그 다음 지정된 행 개수(limit) 만큼 조회
+		
+		// 1) offset 계산
+		int offset 
+			= (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		// 2) RowBounds 객체 생성
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		System.out.println("paramMap::" + paramMap);
+		
+		// 3) selectList("namespace.id", 파라미터, RowBounds) 호출
+		return sqlSession.selectList("boardMapper.selectBoardList_search", paramMap, rowBounds);
+	}
+
 }
