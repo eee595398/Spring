@@ -410,6 +410,11 @@ ORDER SIBLINGS BY COMMENT_NO
 	
 	
 	
+	<!--이미지 목록조회  -->
+	<select id="selectImageListAll" resultType="String">
+	
+	SELECT IMG_RENAME FROM BOARD_IMG
+	</select>
 	
 	
 	
