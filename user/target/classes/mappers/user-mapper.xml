@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="userMapper">
+
+<resultMap type="User" id="user_rm">
+
+<id property="userNo" column="USER_NO" />
+
+<result property="userId" column="USER_ID" />
+
+<result property="userName" column="USER_NAME" />
+
+<result property="userAge" column="USER_AGE" />
+
+</resultMap>
+
+<!--DB에 저장된 컬럼명과 DTO에 선언된 필드명이 다르게 resultMap을 사용해 맞춘다 -->
+<select id="selectUser" resultMap="user_rm">
+
+<!--TB_USER 테이블에서 가지고 온 userId와 일치하는 USER_ID에 정보를 전부 조회함 -->
+SELECT * FROM TB_USER
+
+WHERE USER_ID LIKE '%${userId}%'
+
+</select>
+
+</mapper>

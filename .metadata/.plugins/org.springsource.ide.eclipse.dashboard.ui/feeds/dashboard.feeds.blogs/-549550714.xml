@@ -1,4 +1,142 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 29 Oct 2023 06:19:05 GMT</lastBuildDate><item><title><![CDATA[Spring Cloud Stream Applications 2022.0.0 available now]]></title><link>https://spring.io/blog/2023/10/29/spring-cloud-stream-applications-2022-0-0-available-now</link><guid isPermaLink="true">https://spring.io/blog/2023/10/29/spring-cloud-stream-applications-2022-0-0-available-now</guid><dc:creator><![CDATA[Chris Bono]]></dc:creator><pubDate>Sun, 29 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I¡¯m happy to announce that Spring Cloud Stream Applications &lt;code&gt;2022.0.0&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 01 Nov 2023 07:12:07 GMT</lastBuildDate><item><title><![CDATA[What new is coming in reactor-core 3.6.0? ]]></title><link>https://spring.io/blog/2023/10/31/what-new-is-coming-in-reactor-core-3-6-0</link><guid isPermaLink="true">https://spring.io/blog/2023/10/31/what-new-is-coming-in-reactor-core-3-6-0</guid><dc:creator><![CDATA[Oleh Dokuka]]></dc:creator><pubDate>Tue, 31 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Reactor 3.6.0 is coming and going to be GA on November 14. This blogpost describes new features that are included in this upcoming release!&lt;/p&gt;
+&lt;h1 id=&quot;virtual-threads-support&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#virtual-threads-support&quot; aria-label=&quot;virtual threads support permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Virtual Threads support&lt;/h1&gt;
+&lt;p&gt;Today, everyone talks about &lt;a href=&quot;https://openjdk.org/projects/jdk/21/&quot;&gt;Java 21&lt;/a&gt; and &lt;a href=&quot;https://openjdk.org/projects/loom/&quot;&gt;Project Loom&lt;/a&gt;. The Project Reactor team hears that and sees value in that project within our ecosystem. With this upcoming release, we introduce support for the &lt;a href=&quot;https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html#GUID-DC4306FC-D6C1-4BCC-AECE-48C32C1A8DAA&quot;&gt;&lt;code&gt;VirtualThread&lt;/code&gt;&lt;/a&gt; class in the new &lt;code&gt;ThreadPerTaskBoundedElasticScheduler&lt;/code&gt;, which is going to be automatically used as implementation for &lt;a href=&quot;https://projectreactor.io/docs/core/snapshot/api/reactor/core/scheduler/Schedulers.html#boundedElastic--&quot;&gt;&lt;code&gt;Schedulers.boundedElastic()&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;why-is-it-handy&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#why-is-it-handy&quot; aria-label=&quot;why is it handy permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Why is it handy?&lt;/h3&gt;
+&lt;p&gt;Let&apos;s consider the following code sample:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package io.projectreactor.samples;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+
+import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Schedulers;
+
+public class LoomSample {
+
+   public static void main(String[] args) {
+      Flux.using(
+                () -&gt; Files.lines(Paths.get(ClassLoader.getSystemResource(&quot;testfile.txt&quot;).toURI())),
+                Flux::fromStream,
+                Stream::close
+           )
+          .subscribeOn(Schedulers.boundedElastic())
+          .map(v -&gt; Thread.currentThread() + &quot; &quot; + v)
+          .log()
+          .blockLast();
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;p&gt;The code above reads all lines from the text file in reactive fashion. Unfortunately, the &lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-&quot;&gt;&lt;code&gt;Files.lines&lt;/code&gt;&lt;/a&gt; method is a system I/O call that is known to be blocking. Therefore, we schedule all those operations on the shared &lt;code&gt;Schedulers.boundedElastic()&lt;/code&gt; scheduler.
+It is no secret that &lt;code&gt;Schedulers.boundedElastic()&lt;/code&gt; is the main shared scheduler to &lt;a href=&quot;https://projectreactor.io/docs/core/release/reference/#faq.wrap-blocking&quot;&gt;offload all blocking calls&lt;/a&gt; you may do in the system. It is being used for simple HTTP blocking calls as well as for wrapping some inevitable blocking system interactions, such as generating a random &lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html&quot;&gt;&lt;code&gt;UUID&lt;/code&gt;&lt;/a&gt;. However, it uses &lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html&quot;&gt;platform &lt;code&gt;Thread&lt;/code&gt;&lt;/a&gt; instances by default which may add more contention to your system&lt;/p&gt;
+&lt;p&gt;Now, with Java 21 and the new reactor-core 3.6.x, all those calls are automatically being run on new &lt;code&gt;VirtualThread&lt;/code&gt; instances instead of platform one:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/6rBNQu3PXY1REhpkgT5D9h/9be4e20f67d4b7ffec464fa90ae529ad/ezgif.com-video-to-gif-3.gif&quot; alt=&quot;Reactive Bounded Elastic on VirtualThreads&quot;&gt;&lt;/p&gt;
+&lt;p&gt;As you may have noticed, you will have a &lt;code&gt;VirtualThread&lt;/code&gt; instance carrying scheduled work once you run your app on Java 21 and set a &lt;code&gt;-Dreactor.schedulers.defaultBoundedElasticOnVirtualThreads=true&lt;/code&gt; system property.&lt;/p&gt;
+&lt;h1 id=&quot;better-automatic-context-propagation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#better-automatic-context-propagation&quot; aria-label=&quot;better automatic context propagation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Better Automatic Context Propagation&lt;/h1&gt;
+&lt;p&gt;As you may have heard from our previous blogs starting from Reactor 3.5.0 we introduced a mechanism for automatic &lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/ThreadLocal.html&quot;&gt;&lt;code&gt;ThreadLocal&lt;/code&gt;&lt;/a&gt; restoration from Reactor &lt;a href=&quot;https://projectreactor.io/docs/core/release/api/reactor/util/context/Context.html&quot;&gt;&lt;code&gt;Context&lt;/code&gt;&lt;/a&gt; in operators such as &lt;a href=&quot;https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#handle-java.util.function.BiConsumer-&quot;&gt;&lt;code&gt;handle&lt;/code&gt;&lt;/a&gt; and &lt;a href=&quot;https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#tap-java.util.function.Function-&quot;&gt;&lt;code&gt;tap&lt;/code&gt;&lt;/a&gt;. Later, in reactor 3.5.3 we added automatic restoration of &lt;code&gt;ThreadLocal&lt;/code&gt; values within the whole set of operators available in Project Reactor:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;static final ThreadLocal&amp;#x3C;String&gt; TRACE_ID = ThreadLocal.withInitial(() -&gt; &quot;&quot;);
+
+static {
+   ContextRegistry.getInstance()
+                  .registerThreadLocalAccessor(&quot;TRACE_ID&quot;, TRACE_ID); &amp;#x3C;1&gt; 
+}
+
+public static void main(String[] args) {
+   logger.info(&quot;Setting Trace ID test-123-567-890&quot;);
+   TRACE_ID.set(&quot;test-123-567-890&quot;); &amp;#x3C;1&gt;
+
+   Hooks.enableAutomaticContextPropagation(); &amp;#x3C;2&gt; 
+
+   Mono.fromCallable(() -&gt; {
+          logger.info(&quot;[&quot; + TRACE_ID.get() + &quot;] Generating UUID&quot;); &amp;#x3C;4&gt;
+          return UUID.randomUUID();
+       })
+       .subscribeOn(Schedulers.boundedElastic()) &amp;#x3C;3&gt;
+       .doOnNext(v -&gt; logger.info(&quot;[&quot; + TRACE_ID.get() + &quot;] &quot; + &quot;Generated UUID &quot; + v)) &amp;#x3C;5&gt;
+       .block();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;p&gt;The code above generates a random &lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html&quot;&gt;&lt;code&gt;UUID&lt;/code&gt;&lt;/a&gt; that offloads &amp;#x3C;3&gt;  the blocking generation process on a dedicated worker. To enable automatic &lt;code&gt;ThreadLocal&lt;/code&gt; propagation magic you need to have the &lt;a href=&quot;https://github.com/micrometer-metrics/context-propagation&quot;&gt;Micrometer Context Propagation&lt;/a&gt; library available at the runtime, register &amp;#x3C;1&gt; required &lt;code&gt;ThreadLocal&lt;/code&gt; instances and then, call the &lt;a href=&quot;https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Hooks.html#enableAutomaticContextPropagation--&quot;&gt;&lt;code&gt;Hooks&lt;/code&gt;&lt;/a&gt; API &amp;#x3C;2&gt; to activate this specific &lt;a href=&quot;https://projectreactor.io/docs/core/snapshot/reference/#context.propagation&quot;&gt;propagation mode&lt;/a&gt;.
+If we inspect the output of the code above, we see that the specified &amp;#x3C;1&gt; &lt;code&gt;TRACE_ID&lt;/code&gt; &lt;code&gt;ThreadLocal&lt;/code&gt; is consistently available in all the places &amp;#x3C;3&gt; &amp;#x3C;4&gt; regardless of the &lt;code&gt;Thread&lt;/code&gt; switch.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[ INFO] (main) Setting Trace ID test-123-567-890 &amp;#x3C;1&gt; 
+[ INFO] (boundedElastic-1) [test-123-567-890] Generating UUID &amp;#x3C;2&gt;
+[ INFO] (boundedElastic-1) [test-123-567-890] Generated UUID baa79b8a-7808-4c27-a426-8464e4372269 &amp;#x3C;2&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;ol&gt;
+&lt;li&gt;Trace ID being set on &lt;code&gt;Thread main&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Same trace ID available on &lt;code&gt;Thread boundedElastic-1&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;br&gt;
+&lt;p&gt;Although this mechanism is close enough to what everyone wants, it is limited by Reactor owned producers and transformers. To understand where it may not perfectly work, let¡¯s modify our above sample and add integration with the external Reactive Streams-based library such as JDK11 &lt;a href=&quot;https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html&quot;&gt;&lt;code&gt;HttpClient&lt;/code&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;static HttpClient jdkHttpClient = HttpClient.newHttpClient();
+
+static {
+   ContextRegistry.getInstance()
+                  .registerThreadLocalAccessor(&quot;TRACE_ID&quot;, TRACE_ID);
+}
+
+public static void main(String[] args) {
+   logger.info(&quot;Setting Trace ID&quot;);
+   TRACE_ID.set(&quot;test-123-567-890&quot;);
+
+   Hooks.enableAutomaticContextPropagation();
+
+   Mono.fromFuture(() -&gt; {
+          logger.info(&quot;[&quot; + TRACE_ID.get() + &quot;] Preparing request&quot;);
+          return jdkHttpClient.sendAsync(HttpRequest.newBuilder() &amp;#x3C;1&gt;
+                                             .uri(URI.create(&quot;https://httpbin.org/drip&quot;))
+                                             .GET()
+                                             .build(),
+                HttpResponse.BodyHandlers.ofPublisher());
+       })
+       .flatMapMany(r -&gt; {
+          logger.info(&quot;[&quot; + TRACE_ID.get() + &quot;] &quot; + &quot;Handling response[&quot; + r.statusCode() + &quot;] and reading body&quot;);
+          return FlowAdapters.toPublisher(r.body()); &amp;#x3C;2&gt;
+       })
+       .collect(new ByteBufferToStringCollector()) &amp;#x3C;3&gt;
+       .doOnNext(v -&gt; logger.info(&quot;[&quot; + TRACE_ID.get() + &quot;] &quot; + &quot;Response body is &quot; + v))
+       .block();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;p&gt;In the modified sample, we do a network call &amp;#x3C;1&gt; and then read the response back. The response body is represented as a &lt;a href=&quot;https://docs.oracle.com/javase%2F9%2Fdocs%2Fapi%2F%2F/java/util/concurrent/Flow.Publisher.html&quot;&gt;&lt;code&gt;Flow.Publisher&lt;/code&gt;&lt;/a&gt; &amp;#x3C;2&gt;, which we flatten and transform to string representation &amp;#x3C;3&gt;. Once this code runs, one of the possible outputs may look as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[ INFO] (main) Setting Trace ID test-123-567-890
+[ INFO] (main) [test-123-567-890] Preparing request
+[ INFO] (ForkJoinPool.commonPool-worker-1) [test-123-567-890] Handling response[200] and reading body
+[ INFO] (HttpClient-1-Worker-0) [] Response body is ********** &amp;#x3C;1&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;p&gt;What we can observe from the output is that, with reactor 3.5.3+, a consumption of an external &lt;a href=&quot;https://github.com/reactive-streams/reactive-streams-jvm/blob/v1.0.4/README.md#1-publisher-code&quot;&gt;&lt;code&gt;Publisher&lt;/code&gt;&lt;/a&gt; may lead to context loss &amp;#x3C;1&gt;, since we don&apos;t know whether we need to do extra lifting to restore lost &lt;code&gt;ThreadLocal&lt;/code&gt; instances.&lt;/p&gt;
+&lt;p&gt;With reactor 3.6.x, this output is always consistent:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[ INFO] (main) Setting Trace ID test-123-567-890
+[ INFO] (main) [test-123-567-890] Preparing request
+[ INFO] (ForkJoinPool.commonPool-worker-1) [test-123-567-890] Handling response[200] and reading body
+[ INFO] (HttpClient-1-Worker-0) [test-123-567-890] Response body is ********** &amp;#x3C;1&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;br&gt;
+&lt;p&gt;With this release, we reinforced the &lt;code&gt;ThreadLocal&lt;/code&gt; values restoration mechanics and added extra logic that detects any external &lt;code&gt;Publisher&lt;/code&gt; implementations. Once those are detected, we decorate them to ensure that you never lose &lt;code&gt;ThreadLocal&lt;/code&gt; values while operating in our pipeline.&lt;/p&gt;
+&lt;h1 id=&quot;what-else-multi-release-jar-support&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#what-else-multi-release-jar-support&quot; aria-label=&quot;what else multi release jar support permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What else? Multi-Release Jar support!&lt;/h1&gt;
+&lt;p&gt;With reactor 3.6.x, we embraced &lt;a href=&quot;https://openjdk.org/jeps/238&quot;&gt;multi-release jar (MRJ)&lt;/a&gt; support and already added &lt;a href=&quot;https://github.com/reactor/reactor-core/pull/3523&quot;&gt;improvements&lt;/a&gt; that eliminate reflection, where possible. We &lt;a href=&quot;https://github.com/reactor/reactor-core/issues/3562&quot;&gt;plan&lt;/a&gt; to expand MRJ usage and use all the JDK9+ features in the upcoming releases!&lt;/p&gt;
+&lt;p&gt;Stay tuned!
+All the sources could be found at &lt;a href=&quot;https://github.com/OlegDokuka/reactor-3.6-preview&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[This Week in Spring - October 31st, 2023]]></title><link>https://spring.io/blog/2023/10/31/this-week-in-spring-october-31st-2023</link><guid isPermaLink="true">https://spring.io/blog/2023/10/31/this-week-in-spring-october-31st-2023</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 31 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;img src=&quot;https://pbs.twimg.com/media/F9yJncra0AAK_NI?format=jpg&amp;amp;name=large&quot;&gt;
+&lt;p&gt;Hi Spring fans, and Happy Halloween from the Spring team to those who celebrate!&lt;/p&gt;
+&lt;p&gt;I hope your evening is fun and your day free of scary bugs!&lt;/p&gt;
+&lt;p&gt;My friends, we&apos;ve got some interesting stuff to look at this week so let&apos;s dive right into it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2023/10/26/a-bootiful-podcast-mr-spring-in-action-craig-walls&quot;&gt;A Bootiful Podcast: Mr. Spring in Action, Craig Walls&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2023/10/29/spring-cloud-stream-applications-2022-0-0-available-now&quot;&gt;Spring Cloud Stream Applications 2022.0.0 available now&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2023/10/30/spring-statemachine-4-0-0-m1-is-now-available&quot;&gt;Spring Statemachine 4.0.0-M1 is now available&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/laech/java-stacksrc&quot;&gt;laech/java-stacksrc: Decorates stack traces with source code snippets.&lt;/a&gt; - this is super cool. It&apos;s a way to decorate stack traces with source code snippets.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://kubernetes.io/blog/2023/10/25/introducing-ingress2gateway/&quot;&gt;Blog: Introducing ingress2gateway; Simplifying Upgrades to Gateway API&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://kubernetes.io/blog/2023/10/24/plants-process-and-parties-the-kubernetes-1.28-release-interview/&quot;&gt;Blog: Plants, process and parties: the Kubernetes 1.28 release interview&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Statemachine 4.0.0-M1 is now available]]></title><link>https://spring.io/blog/2023/10/30/spring-statemachine-4-0-0-m1-is-now-available</link><guid isPermaLink="true">https://spring.io/blog/2023/10/30/spring-statemachine-4-0-0-m1-is-now-available</guid><dc:creator><![CDATA[Janne Valkealahti]]></dc:creator><pubDate>Mon, 30 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Shell &lt;code&gt;4.0.0-M1&lt;/code&gt; is now available from Spring repos.&lt;/p&gt;
+&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-statemachine/releases/tag/v4.0.0-M1&quot;&gt;release notes 4.0.0-M1&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-statemachine&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-statemachine&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-statemachine/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-statemachine/docs/4.0.0-M1/reference/&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Cloud Stream Applications 2022.0.0 available now]]></title><link>https://spring.io/blog/2023/10/29/spring-cloud-stream-applications-2022-0-0-available-now</link><guid isPermaLink="true">https://spring.io/blog/2023/10/29/spring-cloud-stream-applications-2022-0-0-available-now</guid><dc:creator><![CDATA[Chris Bono]]></dc:creator><pubDate>Sun, 29 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I¡¯m happy to announce that Spring Cloud Stream Applications &lt;code&gt;2022.0.0&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
 &lt;p&gt;This release updates all of the applications from Spring Boot &lt;code&gt;2.7.x&lt;/code&gt; to &lt;code&gt;3.1.x&lt;/code&gt;. There are many other fixes and enhancements, see the &lt;a href=&quot;https://github.com/spring-cloud/stream-applications/releases/tag/v2022.0.0&quot;&gt;release notes&lt;/a&gt; for more information.&lt;/p&gt;
 &lt;p&gt;We welcome feedback and contributions, so please reach out to us on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-cloud-dataflow&quot;&gt;Stackoverflow&lt;/a&gt; or &lt;a href=&quot;https://github.com/spring-cloud/stream-applications/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Framework 6.1 RC2 released]]></title><link>https://spring.io/blog/2023/10/26/spring-framework-6-1-rc2-released</link><guid isPermaLink="true">https://spring.io/blog/2023/10/26/spring-framework-6-1-rc2-released</guid><dc:creator><![CDATA[Brian Clozel]]></dc:creator><pubDate>Thu, 26 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the Spring Framework team, it is my pleasure to announce that the second Spring Framework 6.1 release candidate is available from &lt;a href=&quot;https://repo.spring.io/milestone&quot;&gt;repo.spring.io/milestone&lt;/a&gt; now.&lt;/p&gt;
 &lt;p&gt;Spring Framework 6.1.0-RC2 ships &lt;a href=&quot;https://github.com/spring-projects/spring-framework/releases/tag/v6.1.0-RC2&quot;&gt;51 fixes and improvements&lt;/a&gt;.&lt;/p&gt;
@@ -127,20 +265,4 @@ class TxCode {
 &lt;li&gt;Stricter filtering of bean definitions in application module tests &lt;a href=&quot;https://github.com/spring-projects/spring-modulith/issues/320&quot;&gt;GH-320&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Moments&lt;/code&gt; now implements &lt;code&gt;Now&lt;/code&gt; &lt;a href=&quot;https://github.com/spring-projects/spring-modulith/issues/335&quot;&gt;GH-335&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;For more information consult the full change logs for &lt;a href=&quot;https://github.com/spring-projects/spring-modulith/releases/tag/1.1.0-RC1&quot;&gt;1.1 RC1&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-modulith/releases/tag/1.0.2&quot;&gt;1.0.2&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Boot 3.2.0-RC1 available now]]></title><link>https://spring.io/blog/2023/10/20/spring-boot-3-2-0-rc1-available-now</link><guid isPermaLink="true">https://spring.io/blog/2023/10/20/spring-boot-3-2-0-rc1-available-now</guid><dc:creator><![CDATA[Andy Wilkinson]]></dc:creator><pubDate>Fri, 20 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Boot &lt;code&gt;3.2.0-RC1&lt;/code&gt; has been released and is now available from &lt;a href=&quot;https://repo.spring.io/milestone&quot;&gt;https://repo.spring.io/milestone&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;This release includes &lt;a href=&quot;https://github.com/spring-projects/spring-boot/releases/tag/v3.2.0-RC1&quot;&gt;128 enhancements, documentation improvements, dependency upgrades, and bug fixes&lt;/a&gt;. Notable new features include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Support for reloading of SSL trust material when using Netty and Tomcat&lt;/li&gt;
-&lt;li&gt;Improved nested jar support&lt;/li&gt;
-&lt;li&gt;Support for configuring RabbitMQ and Apache Kafka using SSL bundles&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.2.0-RC1-Release-Notes&quot;&gt;release notes&lt;/a&gt; for more details and upgrade instructions.&lt;/p&gt;
-&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
-&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
-&lt;p&gt;If you&apos;re interested in helping out, check out the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution&quot;&gt;&quot;ideal for contribution&quot; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href=&quot;https://stackoverflow.com&quot;&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href=&quot;https://stackoverflow.com/tags/spring-boot&quot;&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-boot/docs/3.2.0-RC1/reference/html&quot;&gt;Documentation&lt;/a&gt; | &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-boot&quot;&gt;Stack Overflow&lt;/a&gt; | &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A Bootiful Podcast: VMware vice president Betty Junod]]></title><link>https://spring.io/blog/2023/10/19/a-bootiful-podcast-vmware-vice-president-betty-junod</link><guid isPermaLink="true">https://spring.io/blog/2023/10/19/a-bootiful-podcast-vmware-vice-president-betty-junod</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Thu, 19 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! In this installment Josh Long talks to VMware vice president &lt;a href=&quot;https://twitter.com/BettyJunod&quot;&gt;Betty Junod&lt;/a&gt; about VMware, its amazing ecosystem, and so much more.&lt;/p&gt;
-&lt;iframe title=&quot;VMware Vice President Betty Junod&quot; allowtransparency=&quot;true&quot; height=&quot;150&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:150px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?i=cyh8i-14d65f4-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;logo_link=episode_page&amp;btn-skin=7&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[Spring Boot 3.1.5 available now]]></title><link>https://spring.io/blog/2023/10/19/spring-boot-3-1-5-available-now</link><guid isPermaLink="true">https://spring.io/blog/2023/10/19/spring-boot-3-1-5-available-now</guid><dc:creator><![CDATA[Moritz Halbritter]]></dc:creator><pubDate>Thu, 19 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Boot &lt;code&gt;3.1.5&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
-&lt;p&gt;This release includes &lt;a href=&quot;https://github.com/spring-projects/spring-boot/releases/tag/v3.1.5&quot;&gt;62 bug fixes, documentation improvements, and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
-&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
-&lt;p&gt;If you&apos;re interested in helping out, check out the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution&quot;&gt;&quot;ideal for contribution&quot; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href=&quot;https://stackoverflow.com&quot;&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href=&quot;https://stackoverflow.com/tags/spring-boot&quot;&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-boot/docs/3.1.5/reference/html&quot;&gt;Documentation&lt;/a&gt; | &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-boot&quot;&gt;Stack Overflow&lt;/a&gt; | &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;For more information consult the full change logs for &lt;a href=&quot;https://github.com/spring-projects/spring-modulith/releases/tag/1.1.0-RC1&quot;&gt;1.1 RC1&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-modulith/releases/tag/1.0.2&quot;&gt;1.0.2&lt;/a&gt;.&lt;/p&gt;</content:encoded></item></channel></rss>

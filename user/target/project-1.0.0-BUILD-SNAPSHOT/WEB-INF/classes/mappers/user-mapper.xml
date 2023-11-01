@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="userMapper">
+
+<resultMap type="User" id="user_rm">
+
+<id property="userNo" column="USER_NO" />
+
+<result property="userId" column="USER_ID" />
+
+<result property="userName" column="USER_NAME" />
+
+<result property="userAge" column="USER_AGE" />
+
+</resultMap>
+
+<select id="selectUser" resultMap="user_rm">
+
+SELECT * FROM TB_USER
+
+WHERE USER_ID LIKE '%${userId}%'
+
+</select>
+
+</mapper>

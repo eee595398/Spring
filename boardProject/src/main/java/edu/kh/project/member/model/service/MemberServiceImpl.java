@@ -1,5 +1,8 @@
 package edu.kh.project.member.model.service;
 
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,6 +14,10 @@ import edu.kh.project.member.model.dto.Member;
 @Service // 비즈니스 로직(데이터 가공, DAO 호출, 트랜잭션 제어)처리하는 클래스 명시
 		// + Bean으로 등록하는 어노테이션
 public class MemberServiceImpl implements MemberService{
+	
+	// org.slf4j.Logger : 로그르 작성할 수 있는 객체
+	// org.slf4j.LoggerFactory
+	private Logger logger = LoggerFactory.getLogger(MemberServiceImpl.class);
 	
 	// @Autowired : 작성된 필드와
 	// Bean으로 등록된 객체 중 타입이 일치하는 Bean을
@@ -27,6 +34,17 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public Member login(Member inputMember) {
+		
+		// 로그 출력
+		logger.info("MemberServiceImpl.login() 실행");// 정보 출력 
+		logger.debug("memberEmail : " + inputMember.getMemberEmail());
+		
+		logger.warn("경고 용도");
+		logger.error("이건 오류 발생시");
+		
+		
+		
+		
 		
 		
 //		System.out.println("암호화 확인 1:" +  bcrypt.encode( inputMember.getMemberPw() )  );

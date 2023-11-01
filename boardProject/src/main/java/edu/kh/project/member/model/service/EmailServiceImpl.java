@@ -26,7 +26,7 @@ public class EmailServiceImpl implements EmailService{
 	private String fromEmail = "cmhinst@gmail.com";
 	private String fromUsername = "수업용프로젝트";
 	
-	
+	// 6자리 난수 인증번호 생성
     public String createAuthKey() {
         String key = "";
         for(int i=0 ; i< 6 ; i++) {
@@ -58,7 +58,7 @@ public class EmailServiceImpl implements EmailService{
 	@Transactional
 	@Override
 	public int signUp(String email, String title) {
-		// 6자리 난수 인증번호 생성
+		
 		
 		String authKey = createAuthKey();
 		
